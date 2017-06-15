@@ -13,9 +13,13 @@ const databasePrefix = 'licenses';
 
 if (command === null) {
   const optionDefinitions = [
-    { name: 'skip-dependencies', alias: 's', type: Boolean }
+    { name: 'skip-dependencies', alias: 's', type: Boolean },
+    { name: 'path', alias: 'p', type: String }
   ];
   const options = commandLineArgs(optionDefinitions, argv);
+  if (!('path' in options)) {
+    throw Error('--path to pom.xml is required');
+  }
   /**
     Workflow:
       1 - Fetch dependencies from maven POM (Filtered to remove own projects and tests)
@@ -27,8 +31,8 @@ if (command === null) {
   let dependencies = [];
   if (options['skip-dependencies'] !== true) {
     dependencies = maven.dependencies(
-      '/home/josejulio/Documentos/redhat/rhq-jon-branch/', {
-        ignorePatterns: [ // /(^org\.rhq.*:.*:.*:.*:.*)|(.*:.*:.*:.*-redhat-\d+:.*)|(^(org\.)?jboss.*:.*:.*:.*:.*)/
+      options.path, {
+        ignorePatterns: [
           /(^org\.rhq.*)|(.*-test.*)/
         ],
         mavenExtraArguments: '--settings settings.xml'
