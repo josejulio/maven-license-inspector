@@ -13,6 +13,10 @@ Each dependency will include a reference to the licenses reported.
 You can also specify regular expressions to ignore certain dependencies from the output of `mvn org.apache.maven.plugins:maven-dependency-plugin:2.10:list`. See [index.js](https://github.com/josejulio/maven-license-inspector/blob/master/index.js#L36) on `maven.dependencies
 `call
 
+After you are done filling all the gaps, you could (Todo: support this?) transform these json files to a full licenses.xml (as provided by 
+`mvn org.codehaus.mojo:license-maven-plugin:1.12:download-licenses`).
+
+
 ## Manually add licenses
 After the files are generated, you can manually add licenses (used it to fill the gaps left by it) by doing.
 `node . add-license --name LICENSE_NAME --url LICENSE_URL --id DEPENDENCY_ID` where DEPENDENCY_ID is the id of each row in `licenses-dependencies.nosql`
