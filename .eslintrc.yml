@@ -1,0 +1,27 @@
+extends:
+  - standard
+  - airbnb-base
+plugins:
+  - import
+  - mocha
+rules:
+  no-underscore-dangle:
+  - error
+  - allowAfterThis: true
+  comma-dangle:
+  - error
+  - never
+  no-console:
+  - off
+  max-len:
+  - error
+  - 120
+  no-unused-expressions:
+  - error
+  - allowShortCircuit: true
+  semi:
+  - error
+  - always
+  mocha/no-exclusive-tests:
+  - error
+  strict: off
