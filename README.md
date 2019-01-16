@@ -1,4 +1,7 @@
 # maven-license-inspector
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/josejulio/maven-license-inspector.svg)](https://greenkeeper.io/)
+
 Gather all the dependencies and licenses from your maven project
 
 This is a wrapper on maven commands `mvn org.apache.maven.plugins:maven-dependency-plugin:2.10:list` and `mvn org.codehaus.mojo:license-maven-plugin:1.12:download-licenses`.
